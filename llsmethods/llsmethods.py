@@ -1,9 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from Typing import List
+from typing import List
 from math import sqrt
 
-def cg(A, b:np.array, eps = 10 ** (-4), x:np.array = None, kmax = 100)-> (np.array, List):
+def cg(A, b, eps = 10 ** (-4), x = None, kmax = 100) -> (np.array, List):
     """
     Method for solving system Ax = b by conjugate gradient method without preconditioning. 
     inputs:
@@ -19,11 +19,9 @@ def cg(A, b:np.array, eps = 10 ** (-4), x:np.array = None, kmax = 100)-> (np.arr
         res - numpy array of residual history
     """
 
-    m, _ = A.shape()
-
     # initialize undetermined initial guess to zero vector
     if x == None:
-        x = np.zeros(m)
+        x = np.zeros(b.shape)
 
     res = []    # list of squared residuals
     r = b - A(x)    # residual
@@ -51,3 +49,21 @@ def cg(A, b:np.array, eps = 10 ** (-4), x:np.array = None, kmax = 100)-> (np.arr
         k = k + 1
 
     return (x, res)
+
+if __name__ == "__main__":
+    Amat = np.array([[2, -1], [-1, 2]])
+
+    A = lambda x : Amat@x
+
+    b = np.array([[1], [0]])
+
+    y, res = cg(A, b)
+
+    print(y)
+    print("\n")
+    print(res)
+
+    print("\n")
+    print(np.linalg.solve(Amat, b))
+    print("\n")
+    

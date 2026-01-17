@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from typing import List
-from math import sqrt
+from math import sqrt, cos
 
 def cg(A, b, eps = 10 ** (-4), x = None, kmax = 100) -> (np.array, List):
     """
@@ -50,20 +50,3 @@ def cg(A, b, eps = 10 ** (-4), x = None, kmax = 100) -> (np.array, List):
 
     return (x, res)
 
-if __name__ == "__main__":
-    Amat = np.array([[2, -1], [-1, 2]])
-
-    A = lambda x : Amat@x
-
-    b = np.array([[1], [0]])
-
-    y, res = cg(A, b)
-
-    print(y)
-    print("\n")
-    print(res)
-
-    print("\n")
-    print(np.linalg.solve(Amat, b))
-    print("\n")
-    

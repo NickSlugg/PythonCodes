@@ -8,7 +8,6 @@ def cg(A, b, eps = 10 ** (-4), x = None, kmax = 100) -> (np.array, List):
     Method for solving system Ax = b by conjugate gradient method without preconditioning. 
     inputs:
         A - Function for matrix vector multiplication 
-            #TODO - if enter matrix, construct function by default 
         b - RHS vector
         eps - error tolerance (10^-4 by default)
         x - Initial guess for solution (zero vector by default)
